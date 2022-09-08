@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Login from '../components/Login';
+import Login from '../components/Home/Login';
 import type { FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 
