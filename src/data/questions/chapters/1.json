@@ -1,0 +1,12 @@
+[
+  {
+    "question": "Question one!",
+    "incorrectAnswers": ["A", "B", "C"],
+    "correctAnswers": "D"
+  },
+  {
+    "question": "Question one!",
+    "incorrectAnswers": ["A", "B", "C"],
+    "correctAnswers": "D"
+  }
+]
