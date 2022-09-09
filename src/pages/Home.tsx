@@ -15,6 +15,7 @@ const Home = () => {
       console.log('right password');
       navigateTo('/quiz');
     } else {
+      setInput('');
       setShowErrMessage(true);
     }
   };

@@ -1,5 +1,4 @@
 import React from 'react';
-import { QuizActionKind } from '../enums/QuizActionKind';
 import { IQuestion } from './Question';
 
 export interface IInitialState {
@@ -16,11 +15,6 @@ export interface IQuizState {
 }
 
 export interface IQuizAction {
-  type: QuizActionKind;
-  payload: string;
-}
-
-export interface IContext {
-  state: IInitialState;
-  dispatch: React.Dispatch<IQuizAction>;
+  type: any;
+  payload: any;
 }
