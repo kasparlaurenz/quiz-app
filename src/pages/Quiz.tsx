@@ -14,22 +14,22 @@
 
 import { useContext } from 'react';
 import Question from '../components/Quiz/Question';
-import { QuizContext, QuizProvider } from '../contexts/quiz';
+import { QuizContext, QuizProvider } from '../contexts/QuizContext';
 
 const Quiz = () => {
-  const [quizState, dispatch] = useContext(QuizContext);
+  const { state, dispatch } = useContext(QuizContext);
 
   return (
     <QuizProvider>
       <div className="quiz">
-        {quizState.showResults && (
+        {state.showResults && (
           <div className="results">
             <div className="congratulations">Congratulations!</div>
             <div className="results-info">
               <div>You have completed the quiz.</div>
               <div>
-                You've got {quizState.correctAnswersCount} of &nbsp;
-                {quizState.questions.length} right.
+                You've got {state.correctAnswersCount} of &nbsp;
+                {state.questions.length} right.
               </div>
             </div>
             <div
@@ -40,14 +40,13 @@ const Quiz = () => {
             </div>
           </div>
         )}
-        {!quizState.showResults && (
+        {!state.showResults && (
           <div>
             <div className="score">
-              Question {quizState.currentQuestionIndex + 1}/
-              {quizState.questions.length}
+              Question {state.currentQuestionIndex + 1}/{state.questions.length}
             </div>
             <Question />
-            {quizState.currentAnswer && (
+            {state.currentAnswer && (
               <div
                 onClick={() => dispatch({ type: 'NEXT_QUESTION' })}
                 className="next-button"

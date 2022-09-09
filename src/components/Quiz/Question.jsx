@@ -13,19 +13,19 @@
 
 import Answer from './Answer';
 import { useContext } from 'react';
-import { QuizContext } from '../contexts/quiz';
+import { QuizContext } from '../../contexts/QuizContext';
 
 const Question = () => {
-  const [quizState, dispatch] = useContext(QuizContext);
-  const currentQuestion = quizState.questions[quizState.currentQuestionIndex];
+  const { state, dispatch } = useContext(QuizContext);
+  const currentQuestion = state.questions[state.currentQuestionIndex];
   return (
     <div>
       <div className="question">{currentQuestion.question}</div>
       <div className="answers">
-        {quizState.answers.map((answer, index) => (
+        {state.answers.map((answer, index) => (
           <Answer
             answerText={answer}
-            currentAnswer={quizState.currentAnswer}
+            currentAnswer={state.currentAnswer}
             correctAnswer={currentQuestion.correctAnswer}
             key={index}
             index={index}

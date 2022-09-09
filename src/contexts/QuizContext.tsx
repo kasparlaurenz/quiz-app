@@ -8,7 +8,7 @@ import {
 } from '../interfaces/InitialState';
 import { shuffleAnswers } from '../util/shuffleAnswers';
 
-const initialState: IInitialState = {
+const initialState = {
   questions,
   currentQuestionIndex: 0,
   currentAnswer: '',
@@ -56,7 +56,10 @@ const reducer = (state: IInitialState, action: IQuizAction): IInitialState => {
   }
 };
 
-export const QuizContext = createContext<IContext | null>(null);
+export const QuizContext = createContext<{
+  state: IInitialState;
+  dispatch: React.Dispatch<any>;
+}>({ state: initialState, dispatch: () => null });
 
 export const QuizProvider = ({ children }: any) => {
   const [state, dispatch] = useReducer(reducer, initialState);
