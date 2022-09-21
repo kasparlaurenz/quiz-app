@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+/* body {
   background-color: #e4e4e4;
 }
 
@@ -125,4 +125,4 @@ div {
 
 .disabled-answer {
   pointer-events: none;
-}
+} */
