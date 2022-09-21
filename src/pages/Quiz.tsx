@@ -14,50 +14,48 @@
 
 import { useContext } from 'react';
 import Question from '../components/Quiz/Question';
-import { QuizContext, QuizProvider } from '../contexts/QuizContext';
+import { QuizContext } from '../contexts/QuizContext';
 
 const Quiz = () => {
   const { state, dispatch } = useContext(QuizContext);
 
   return (
-    <QuizProvider>
-      <div className="quiz">
-        {state.showResults && (
-          <div className="results">
-            <div className="congratulations">Congratulations!</div>
-            <div className="results-info">
-              <div>You have completed the quiz.</div>
-              <div>
-                You've got {state.correctAnswersCount} of &nbsp;
-                {state.questions.length} right.
-              </div>
+    <div className="quiz">
+      {state.showResults && (
+        <div className="results">
+          <div className="congratulations">Congratulations!</div>
+          <div className="results-info">
+            <div>You have completed the quiz.</div>
+            <div>
+              You've got {state.correctAnswersCount} of &nbsp;
+              {state.questions.length} right.
             </div>
+          </div>
+          <div
+            onClick={() => dispatch({ type: 'RESTART' })}
+            className="next-button"
+          >
+            Restart
+          </div>
+        </div>
+      )}
+      {!state.showResults && (
+        <div>
+          <div className="score">
+            Question {state.currentQuestionIndex + 1}/{state.questions.length}
+          </div>
+          <Question />
+          {state.currentAnswer && (
             <div
-              onClick={() => dispatch({ type: 'RESTART' })}
+              onClick={() => dispatch({ type: 'NEXT_QUESTION' })}
               className="next-button"
             >
-              Restart
+              Next question
             </div>
-          </div>
-        )}
-        {!state.showResults && (
-          <div>
-            <div className="score">
-              Question {state.currentQuestionIndex + 1}/{state.questions.length}
-            </div>
-            <Question />
-            {state.currentAnswer && (
-              <div
-                onClick={() => dispatch({ type: 'NEXT_QUESTION' })}
-                className="next-button"
-              >
-                Next question
-              </div>
-            )}
-          </div>
-        )}
-      </div>
-    </QuizProvider>
+          )}
+        </div>
+      )}
+    </div>
   );
 };
 
