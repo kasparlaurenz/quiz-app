@@ -17,7 +17,7 @@ export interface IQuizState {
 
 export interface IQuizAction {
   type: QuizActionKind;
-  payload: string;
+  payload?: any;
 }
 
 export interface IContext {
